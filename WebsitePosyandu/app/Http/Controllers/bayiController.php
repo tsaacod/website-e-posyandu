@@ -39,7 +39,7 @@ class bayiController extends Controller
             'alamat' => 'required',
         ]);
 
-        Dosen::create($request->all());
+        bayi::create($request->all());
         return redirect()->route('bayi.index')->with('success', 'Data bayi berhasil ditambahkan.');
     }
 
@@ -76,7 +76,7 @@ class bayiController extends Controller
             'alamat' => 'required',
         ]);
 
-        $dosen->update($request->all());
+        $bayi->update($request->all());
         return redirect()->route('bayi.index')->with('success', 'Data Bayi berhasil diperbarui.');
     }
 
@@ -85,7 +85,8 @@ class bayiController extends Controller
      */
     public function destroy(string $id)
     {
-        $bayi->delete();
-        return redirect()->route('bayi.index')->with('success', 'Data Bayi berhasil dihapus.');
+    $bayi = bayi::findOrFail($id); // Ambil data bayi berdasarkan ID
+    $bayi->delete(); // Hapus data
+    return redirect()->route('bayi.index')->with('success', 'Data Bayi berhasil dihapus.');
     }
 }
