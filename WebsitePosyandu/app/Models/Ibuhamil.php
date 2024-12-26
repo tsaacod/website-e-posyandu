@@ -12,8 +12,5 @@ class Ibuhamil extends Model
     protected $table = 'ibu_hamil';
     protected $fillable = ['Nama','TanggalLahir','NoTelepon','Alamat'];
  
-    public function bayi()
-    {
-        return $this->hasMany(bayi::class);
-    }
+    
 }
